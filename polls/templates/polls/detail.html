@@ -1,0 +1,51 @@
+<head>
+<link rel = "stylesheet" type = "text/css" href = "/static/css/gonglang.css"/>
+<script type = "text/javascript" src = "/static/js/gongxi.js"></script>
+
+</head>
+<h1>fdg</h1>
+<textarea id = "Editor_Edit_EditorBody" area-hidden = "true" style = "display:none"></textarea>
+ <script type = "text/javascript">
+    //test()
+    
+   
+    </script>
+<ul>
+    <li>{{request}}</li>
+      <iframe id = "edit" src = "/static/js/t.html" style:"" display:block;">
+  
+    </iframe>
+    {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+    <form action="{% url 'polls:vote' question.id'213'    %}" method = "post" id = "form1">
+    {% csrf_token %}
+    <script type = "text/javascript">
+ //   test()
+    
+   function getcontent(){
+        ff = document.getElementById('edit')
+  
+        content = document.getElementById('edit').contentDocument.body.innerHTML
+      //  content = document.getElementById('edit').GetDocument().body.innerHTML;
+        
+        return content
+    }
+    
+    function last()
+    {
+    pp =  document.getElementById('content')
+       pp.value = getcontent()
+         document.getElementById('form1').submit()
+    }
+
+    </script>
+  
+    <div class = "Clear"></div>
+    {% for choice in question.choice_set.all%}
+    <input type="radio" name="choice" id = "choice{{forloop.counter}}" value = "{{choice.id}}" }"/>
+    <label for= "choice{{forloop.counter}}">{{choice.choice_text}}</label><br/>
+  
+    {%endfor%}
+    <input type="text" name = "content" value = "gx" id = "content"/>
+    <input type="button" value = "Vote" onclick = "last();""/>
+    </form>
+ </ul>   
