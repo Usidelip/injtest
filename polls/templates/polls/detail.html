@@ -4,7 +4,7 @@
 
 </head>
 <h1>fdg</h1>
-<textarea id = "Editor_Edit_EditorBody" area-hidden = "true" style = "display:none"></textarea>
+<textarea id = "Editor_Edit_EditorBody" area-hidden = "true" style = "display:none" value = "{{question.content}}">{{question.content}}</textarea>
  <script type = "text/javascript">
     //test()
     
@@ -12,11 +12,11 @@
     </script>
 <ul>
     <li>{{request}}</li>
-      <iframe id = "edit" src = "/static/js/t.html" style:"" display:block;">
+      <iframe id = "edit" width = 800 height = 500 src = "/static/js/t.html" style:"" display:block;">
   
     </iframe>
     {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
-    <form action="{% url 'polls:vote' question.id'213'    %}" method = "post" id = "form1">
+    <form action="{% url 'polls:vote' question.id    %}" method = "post" id = "form1">
     {% csrf_token %}
     <script type = "text/javascript">
  //   test()
@@ -29,7 +29,9 @@
         
         return content
     }
-    
+    window.onload = function(){
+    document.getElementById("edit").contentDocument.body.innerHTML = "{{question.content}}"
+    }
     function last()
     {
     pp =  document.getElementById('content')

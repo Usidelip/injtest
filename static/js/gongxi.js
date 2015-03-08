@@ -4,6 +4,6 @@ function test()
 }
 function getcontent(){
         content = document.getElementById('edit').GetDocument().body.innerHTML;
-       {{question.content}} = content
+       
         document.form1.submit()
     }
